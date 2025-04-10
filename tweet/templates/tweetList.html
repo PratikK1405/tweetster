@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}TweeTSter Home Page{% endblock title %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Tweets</h2>
+        <a class="btn btn-primary" href="{% url 'tweetCreate' %}">Create New</a>
+    </div>
+
+    {% if tweets %}
+    <div class="row g-4">
+        {% for tweet in tweets %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+                {% if tweet.image %}
+                    <img src="{{ tweet.image.url }}" class="card-img-top" alt="Tweet image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ tweet.user }}</h5>
+                    <p class="card-text">{{ tweet.text }}</p>
+                    <p class="card-text"><small class="text-muted">{{ tweet.updatedOn|date:'Y-M-d' }}</small></p>
+                </div>
+                {% if tweet.user == user %}
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'tweetEdit' tweet.id %}" class="btn btn-outline-success btn-sm">Edit</a>
+                    <a href="{% url 'tweetDelete' tweet.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="text-muted text-center">No tweets to display yet.</p>
+    {% endif %}
+</div>
+{% endblock content %}

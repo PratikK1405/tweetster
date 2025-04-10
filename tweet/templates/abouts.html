@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-10 col-lg-8">
+        <div class="p-5 bg-secondary text-light rounded shadow-lg animate__animated animate__fadeIn">
+            <h1 class="text-center mb-4 fw-bold">About the Developer</h1>
+            <div class="text-center">
+                <img src="{% static 'assets/pic.png' %}" alt="Profile" class="rounded-circle mb-4 shadow" 
+                style="width: 120px; height: 120px; object-fit: cover;">
+            </div>
+            <p class="lead text-center">
+                Hi, I'm <strong>Pratik Kolambkar</strong> — the creator of TweeTSter
+            </p>
+            <p class="text-center">
+                I’m passionate about building sleek, functional web apps using Django, and always exploring cool ways to bring ideas to life with clean UI & solid backend logic.
+            </p>
+            <hr>
+            <p class="text-center">
+                Reach me at: <a href="mailto:kolambkarpratik05@gmail.com">kolambkarpratik05@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
